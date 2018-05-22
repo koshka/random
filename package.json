@@ -1,18 +1,30 @@
 {
   "name": "just_an_app",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "author": "koshka",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
-    "nodemon": "^1.17.4"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "html-loader": "^0.5.5",
+    "mini-css-extract-plugin": "^0.4.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
   }
 }
