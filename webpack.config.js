@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 /**
  * This plugin should be used only on production builds
@@ -11,6 +12,11 @@ module.exports = (env, argv) => {
   const DEV = argv.mode === 'development'
 
   return {
+    entry: { main: path.resolve(__dirname, 'src/index.js') },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: DEV ? '[name].js' : '[name].[contenthash].js'
+    },
     optimization: {
       minimizer: [
         // Because optimization is provided (for css minification),
@@ -64,8 +70,8 @@ module.exports = (env, argv) => {
         filename: './index.html'
       }),
       new MiniCssExtractPlugin({
-        filename: DEV ? '[name].css' : '[name].[hash].css',
-        chunkFilename: DEV ? '[id].css' : '[id].[hash].css'
+        filename: DEV ? '[name].css' : '[name].[contenthash].css',
+        chunkFilename: DEV ? '[id].css' : '[id].[contenthash].css'
       })
     ]
   }
